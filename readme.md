@@ -29,6 +29,10 @@
      ②克隆一个本地仓库：`git clone git@github.com:moxiewf/git-skills.git`
      
 -----
-15. 创建并切换分支：`git checkout -b dev` (-b 参数表示创建并切换，相当于两个命令先后执行：`git branch dev` `git checkout dev`)
-16. 查看分支：`git branch` (会列出所有分支，当前分支会标有一个*)
-17. 
+15. 创建+切换分支：`git checkout -b dev` （-b 参数表示创建并切换，相当于两个命令先后执行：`git branch dev` `git checkout dev`）
+16. 新版的git提供了新的切换分支的命令：`git switch -c dev`（与`git checkout -b dev`效果一致，是为了不和之前提到的撤销修改命令`git checkout -- <file>`混淆，也更容易理解）
+16. 查看分支：`git branch` （会列出所有分支，当前分支会标有一个*）
+17. 合并指定分支代码到当前分支：`git merge dev`（合并dev代码到当前分支）
+18. 删除本地dev分支：`git branch -d dev` （如果删除不了可以强制删除 `git branch -D dev`） （建议在新分支上完成了任务后，合并代码到develop、master后即删除本地建的新分支）
+19. 查看分支合并图：`git log --graph`
+20. 
