@@ -29,3 +29,6 @@
      ②克隆一个本地仓库：`git clone git@github.com:moxiewf/git-skills.git`
      
 -----
+15. 创建并切换分支：`git checkout -b dev` (-b 参数表示创建并切换，相当于两个命令先后执行：`git branch dev` `git checkout dev`)
+16. 查看分支：`git branch` (会列出所有分支，当前分支会标有一个*)
+17. 
