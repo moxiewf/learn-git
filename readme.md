@@ -1,4 +1,4 @@
-0. **工作区**：就是你在电脑里能看到的目录；**版本库**：`git init`命令之后生成的`.git`，git的版本库中存了很多东西，其中最重要的就是成为stage的`暂存区`，还有git自动为我们创建的第一个分支`master`，以及指向master的一个指针`HEAD`
+**工作区**：就是你在电脑里能看到的目录；**版本库**：`git init`命令之后生成的`.git`，git的版本库中存了很多东西，其中最重要的就是成为stage的`暂存区`，还有git自动为我们创建的第一个分支`master`，以及指向master的一个指针`HEAD`
 1. 创建一个空目录：learn-Git
 2. 把这个目录变成git可以管理的仓库： `git init`
 3. 新建文件添加到暂存区：`git add test.txt`
@@ -35,4 +35,29 @@
 17. 合并指定分支代码到当前分支：`git merge dev`（合并dev代码到当前分支）
 18. 删除本地dev分支：`git branch -d dev` （如果删除不了可以强制删除 `git branch -D dev`） （建议在新分支上完成了任务后，合并代码到develop、master后即删除本地建的新分支）
 19. 查看分支合并图：`git log --graph`
-20. 
+-----
+20. 分支管理策略：
+
+    ①通常合并分支时，如果可能，git会用`Fast forward`模式，但是在这种模式下，删除分支后会丢掉分支信息
+
+    ②如果要强制禁用`Fast forward`模式，git就会在merge时产生一个新的commit，这样，从历史分支上就可以看出分支信息
+
+    ③禁用`Fast forward`模式命令：`git merge --no-ff -m "merge with no-ff" dev`（`--no-ff`参数表示禁用`Fast forward`模式）
+
+    ④分支策略：`master`分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；干活都在`develop`分支，也就是说`develop`分支是不稳定的，到某个时候，比如1.0版本发布时，再把`develop`分支合并到`master`上，在`master`分支发布1.0版本；你和你的小伙伴每个人都在`develop`分支干活，每个人都有自己的分支，时不时往`develop`上合并代码就可以了
+
+-----
+21. Bug分支：
+
+    ①每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除
+    
+    ②首先确定要在哪个分支上修复bug，假如在`master`分支上修复，就从`master`分支上创建临时分支: `git checkout master` `git checkout -b hotfix-1`
+
+    ③在`hotfix-1`分支修复好bug并提交后，切换到`master`分支完成合并：`git checkout master` `git merge --no-ff -m "merge bug fix 1" hotfix-1`
+
+    ④合并完成后将临时分支删除：`git branch -d hotfix-1`
+-----
+22. 将工作现场隐藏起来：`git stash save`
+23. 将工作现场恢复：`git stash pop`（恢复的同时把stash的内容也删除了）；`git stash apply <stash{xxx}>`（恢复的时候不会删除stash的内容，删除需要再执行命令`git stash drop`）
+24. 查看隐藏的工作现场列表：`git stash list`
+25. 复制一个特定的提交到当前分支：`git cherry-pick <commit_id>` （除了复制commit_id对应的那次提交外，也能将某个分支的最近一次提交复制 `git cherry-pick <branch_name>`；复制多个提交`git cherry-pick <HashA> <HashB>`）
