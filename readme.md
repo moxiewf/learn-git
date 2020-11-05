@@ -21,7 +21,7 @@
     ②将本地已有的仓库与之关联：`git remote add origin git@github.com:moxiewf/learn-git.git
 `
 
-    ③把本地仓库的所有内容推送到github的远程仓库上：`git push --set-upstream origin master
+    ③把本地仓库的所有内容推送到github的远程仓库上：`git push --set-upstream origin master；本地关联远程分支：`git branch --set-upstream-to=origin/remote_branch  local_branch`
 `
 
 14. 从远程仓库克隆：（本地没有仓库，直接从github上新建仓库）
@@ -31,11 +31,11 @@
      ②克隆一个本地仓库：`git clone git@github.com:moxiewf/git-skills.git`
      
 -----
-15. 创建+切换分支：`git checkout -b dev` （-b 参数表示创建并切换，相当于两个命令先后执行：`git branch dev` `git checkout dev`）
+15. 创建+切换分支：`git checkout -b dev` （-b 参数表示创建并切换，相当于两个命令先后执行：`git branch dev` `git checkout dev`）；`git checkout -b dev origin/dev`（从远程origin的dev分支创建本地dev分支）
 16. 新版的git提供了新的切换分支的命令：`git switch -c dev`（与`git checkout -b dev`效果一致，是为了不和之前提到的撤销修改命令`git checkout -- <file>`混淆，也更容易理解）
 17. 查看分支：`git branch` （会列出所有分支，当前分支会标有一个*）
 18. 合并指定分支代码到当前分支：`git merge dev`（合并dev代码到当前分支）
-19. 删除本地dev分支：`git branch -d dev` （如果删除不了可以强制删除 `git branch -D dev`） （建议在新分支上完成了任务后，合并代码到develop、master后即删除本地建的新分支）
+19. 删除本地dev分支：`git branch -d dev` （如果删除一个没有被合并过的分支需要加上`-D`参数强制删除 `git branch -D dev`） （建议在新分支上完成了任务后，合并代码到develop、master后即删除本地建的新分支）
 20. 查看分支合并图：`git log --graph`
 -----
 21. 分支管理策略：
@@ -63,3 +63,14 @@
 24. 将工作现场恢复：`git stash pop`（恢复的同时把stash的内容也删除了）；`git stash apply <stash{xxx}>`（恢复的时候不会删除stash的内容，删除需要再执行命令`git stash drop`）
 25. 查看隐藏的工作现场列表：`git stash list`
 26. 复制一个特定的提交到当前分支：`git cherry-pick <commit_id>` （除了复制commit_id对应的那次提交外，也能将某个分支的最近一次提交复制 `git cherry-pick <branch_name>`；复制多个提交`git cherry-pick <HashA> <HashB>`）
+27. 查看远程仓库的信息：`git remote` （或者用`git remote -v`查看更详细的信息，会显示可以fetch和push的origin地址，如果没有推送权限就看不到push的地址）
+28. 推送分支：`git push <远程主机名> <本地分支名>:<远程分支名>`，如果本地分支名与远程分支名相同则可以写成`git push <远程主机名> <本地分支名>`；强制推送：`git push --force origin master`；删除远程分支：`git push origin --delete master`
+29. 将提交历史整理成一条直线：`git rebase`
+-----
+30. 标签：切换到需要打标签的分支后执行`git tag <name>`；针对某次提交打tag`git tag <name> <commit_id>`（git tag -a v0.1 -m "version 0.1 released" 1094adb  -a指定标签名称 -m指定说明文字）； 查看标签信息`git show <tag_name>`
+31. 配置git命令别名：`git config --global alias.st status`（以st表示status）`git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"` 配置Git的时候，加上`--global`是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。（如果要删除别名，删除.git/config文件中[alias]项中对应的配置即可）
+-----
+
+[git备忘单](https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf)
+
+[廖雪峰Git教程](https://www.liaoxuefeng.com/wiki/896043488029600)
