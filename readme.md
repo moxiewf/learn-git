@@ -4,7 +4,7 @@
 1. 创建一个空目录：learn-Git
 2. 把这个目录变成git可以管理的仓库： `git init`
 3. 新建文件添加到暂存区：`git add test.txt`
-4. 把暂存区的内容提交到当前分支：`git commit -m "add: test.txt`
+4. 把暂存区的内容提交到当前分支：`git commit -m "add: test.txt` （`git commit --no-verify -m "xxx"`跳过代码检查）
 5. 查看仓库当前的状态：`git status`
 6. 查看文件的修改前后对比：`git diff test.txt`
 7. 查看从近到远的提交历史：`git log`   `git log --pretty=oneline`；查看每一次的命令历史：`git reflog`
