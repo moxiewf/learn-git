@@ -70,6 +70,8 @@
 30. 标签：切换到需要打标签的分支后执行`git tag <name>`；针对某次提交打tag`git tag <name> <commit_id>`（git tag -a v0.1 -m "version 0.1 released" 1094adb  -a指定标签名称 -m指定说明文字）； 查看标签信息`git show <tag_name>`
 31. 配置git命令别名：`git config --global alias.st status`（以st表示status）`git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"` 配置Git的时候，加上`--global`是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。（如果要删除别名，删除.git/config文件中[alias]项中对应的配置即可）
 -----
+**修复线上bug操作流程**：比如在0.23.0的版本发现了bug，要基于这个版本对应的tag上新建一个分支hotfix-0.23.0，改好以后将hotfix-0.23.0的代码打一个新的tag，发布新的版本0.23.1。同时要将hotfix-0.23.0的代码合并到目前开发的分支，保持无老bug。
+
 
 [git备忘单](https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf)
 
