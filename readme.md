@@ -73,6 +73,8 @@
 **修复线上bug操作流程**：比如在0.23.0的版本发现了bug，要基于这个版本对应的tag上新建一个分支hotfix-0.23.0，改好以后将hotfix-0.23.0的代码打一个新的tag，发布新的版本0.23.1。同时要将hotfix-0.23.0的代码合并到目前开发的分支，保持无老bug。
 
 
-[git备忘单](https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf)
+[git-简易教程](https://www.bootcss.com/p/git-guide/)
 
 [廖雪峰Git教程](https://www.liaoxuefeng.com/wiki/896043488029600)
+
+[git备忘单](https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf)
