@@ -77,4 +77,6 @@
 
 [廖雪峰Git教程](https://www.liaoxuefeng.com/wiki/896043488029600)
 
+[git中文版](http://gitbook.liuhui998.com/index.html)
+
 [git备忘单](https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf)
